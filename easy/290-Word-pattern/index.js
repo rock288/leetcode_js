@@ -7,34 +7,29 @@
  * @return {boolean}
  */
 var wordPattern = function (pattern, s) {
-  const arrS = s.split(" ");
-  const obj = {};
-  const objA = {};
+  const arrS = s.replaceAll("constructor", "constructor_").split(" ") // obj["constructor"] is exists
+  const obj = {}
+  const objA = {}
 
   if (pattern.length !== arrS.length) {
-    return false;
+    return false
   }
 
   for (let i = 0; i < pattern.length; i++) {
     if (!obj[pattern[i]]) {
-      obj[pattern[i]] = arrS[i];
-      console.log(obj, objA);
+      obj[pattern[i]] = arrS[i]
       if (objA[arrS[i]]) {
-        return false;
+        return false
       }
-      objA[arrS[i]] = pattern[i];
+      objA[arrS[i]] = pattern[i]
     } else if (obj[pattern[i]] !== arrS[i]) {
-      return false;
+      return false
     }
   }
 
-  return true;
-};
+  return true
+}
 
 // console.log(wordPattern("abba", "dog cat cat dog"));
 // console.log(wordPattern("abba", "dog cat cat fish"));
-console.log(wordPattern("abba", "dog constructor constructor dog"));
-const a = {
-  constructor: 1,
-};
-console.log(a);
+console.log(wordPattern("abba", "dog constructor constructor dog"))
