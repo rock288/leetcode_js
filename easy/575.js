@@ -3,8 +3,9 @@
  * @return {number}
  */
 var distributeCandies = function (candyType) {
-  const map = [...new Set(candyType)]
-  return candyType.length / 2 > map.length ? map.length : candyType.length / 2
+  const set = new Set(candyType)
+  const n2 = candyType.length / 2
+  return n2 > set.size ? set.size : n2
 }
 
 console.log("====================================")
